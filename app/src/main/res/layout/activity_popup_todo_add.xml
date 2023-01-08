@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#D3D3D3"
+    tools:context=".Popup_Todo_Add">
+
+    <Button
+        android:id="@+id/cancel_button_todo"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_textbox_rounding_box"
+        android:text="취소"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/add_button_todo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rpt_todo" />
+
+    <Button
+        android:id="@+id/add_button_todo"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_textbox_rounding_box"
+        android:text="저장"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cancel_button_todo"
+        app:layout_constraintTop_toBottomOf="@id/rpt_todo" />
+
+    <TextView
+        android:id="@+id/Add_Todo_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="42dp"
+        android:background="@null"
+        android:text="할 일 추가"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/todoName_todo"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:background="#D3A8A8A8"
+        android:ems="12"
+        android:hint="할 일 제목 입력"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Add_Todo_Title"
+        app:layout_constraintTop_toBottomOf="@+id/Add_Todo_Title" />
+
+    <TextView
+        android:id="@+id/todo_text_date"
+        android:layout_width="50dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:gravity="center"
+        android:text="날짜:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/todo_text_alarm"
+        app:layout_constraintEnd_toStartOf="@+id/date_todo"
+        app:layout_constraintStart_toStartOf="@id/Add_Todo_Title"
+        app:layout_constraintTop_toTopOf="@+id/date_todo"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+        android:id="@+id/date_todo"
+        android:padding="5dp"
+        android:layout_width="168dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:background="#D3A8A8A8"
+        android:ems="8"
+        android:gravity="center_vertical"
+        android:text="날짜를 입력하세요"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/todo_text_date"
+        app:layout_constraintTop_toBottomOf="@+id/todoName_todo" />
+
+    <TextView
+        android:id="@+id/todo_text_dline"
+        android:layout_width="50dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:gravity="center"
+        android:text="마감일:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBaseline_toBaselineOf="@+id/deadline_todo"
+        app:layout_constraintEnd_toStartOf="@+id/deadline_todo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/Add_Todo_Title" />
+
+    <TextView
+        android:id="@+id/deadline_todo"
+        android:padding="5dp"
+        android:layout_width="168dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="#D3A8A8A8"
+        android:text="마감 시간를 입력하세요(선택)"
+        android:gravity="center_vertical"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/todo_text_dline"
+        app:layout_constraintTop_toBottomOf="@+id/date_todo" />
+
+    <TextView
+        android:id="@+id/todo_text_alarm"
+        android:layout_width="50dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:gravity="center"
+        android:text="알람:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBaseline_toBaselineOf="@+id/alram_todo"
+        app:layout_constraintEnd_toStartOf="@+id/alram_todo"
+        app:layout_constraintStart_toStartOf="@id/Add_Todo_Title" />
+
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/alram_todo"
+        android:layout_width="168dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:background="#D3A8A8A8"
+        android:hint="알람 시간을 입력하세요(선택)"
+        android:textSize="12dp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/todo_text_alarm"
+        app:layout_constraintTop_toBottomOf="@+id/deadline_todo"
+        tools:layout_editor_absoluteY="202dp" />
+
+    <TextView
+        android:id="@+id/todo_text_rpt"
+        android:layout_width="50dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:gravity="center"
+        android:text="반복:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBaseline_toBaselineOf="@+id/rpt_todo"
+        app:layout_constraintEnd_toStartOf="@+id/rpt_todo"
+        app:layout_constraintStart_toStartOf="@id/Add_Todo_Title"
+        />
+
+    <CheckBox
+        android:id="@+id/rpt_todo"
+        android:layout_width="168dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:text="반복 여부를 선택하세요"
+        android:textColor="@color/dark_gray"
+        android:textSize="12dp"
+        android:background="#D3A8A8A8"
+        app:layout_constraintStart_toEndOf="@id/todo_text_rpt"
+        app:layout_constraintTop_toBottomOf="@+id/alram_todo"/>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+
+</android.support.constraint.ConstraintLayout>
