@@ -15,8 +15,17 @@ class DatePick_Spinner : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_pick_spinner)
 
+        fun month_to_twodig(themonth:String): String {
+            if ("1" <= themonth && themonth < "10") {
+                return StringBuilder("0").append(themonth).toString();
+            }
+            else { return themonth}
+        }
+
         save_button_date.setOnClickListener {
-            var date = datePicker.year.toString()+"/"+datePicker.month.toString()+"/"+datePicker.dayOfMonth.toString()
+            var date = datePicker.year.toString()+"-"+month_to_twodig((datePicker.month+1).toString())+"-"+datePicker.dayOfMonth.toString()
+            intent.putExtra("chosendate", date)
+            setResult(RESULT_OK, intent)
             finish()
         }
     }
