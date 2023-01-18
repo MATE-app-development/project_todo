@@ -54,7 +54,7 @@ class Popup_Todo_Add: AppCompatActivity() {
         }
 
         add_button_todo.setOnClickListener {
-            if(todoName_todo.text.toString().isNotEmpty()){
+            if(todoName_todo.text.toString().isNotEmpty() && t_date.isNotEmpty()){ //필수 입력 칸 : 이름과 날짜
                 var td_name:String = todoName_todo.text.toString()
                 var thetd = todo(null, td_name, t_date, t_dline, null, null, t_alarm, null, null)
                 //값 마저 넣어주기.
@@ -75,7 +75,6 @@ class Popup_Todo_Add: AppCompatActivity() {
 
         if (requestCode == TDATE_REQUSET_CODE) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this.applicationContext, "선택된 날짜 : " + data?.getStringExtra("chosendate"), Toast.LENGTH_SHORT).show()
                 t_date= data?.getStringExtra("chosendate").toString()
                 date_todo.text = t_date
             } else {
@@ -84,10 +83,8 @@ class Popup_Todo_Add: AppCompatActivity() {
         }
         else if (requestCode == TDLINE_REQUSET_CODE) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this.applicationContext, "선택된 시간 : " + data?.getStringExtra("chosendatetime"), Toast.LENGTH_SHORT).show()
                 t_dline= data?.getStringExtra("chosendatetime").toString()
                 deadline_todo.text = t_dline
-                //시간이 안 뜸 개빡침
             } else {
                 Toast.makeText(this.applicationContext, "날짜 입력 실패", Toast.LENGTH_SHORT).show()
                 t_dline=null
@@ -95,13 +92,11 @@ class Popup_Todo_Add: AppCompatActivity() {
         }
         else if (requestCode == TALRAM_REQUSET_CODE) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this.applicationContext, "선택된 시간 : " + data?.getStringExtra("chosendatetime"), Toast.LENGTH_SHORT).show()
                 t_alarm= data?.getStringExtra("chosendatetime").toString()
                 alram_todo.text = t_alarm
             } else {
                 Toast.makeText(this.applicationContext, "날짜 입력 실패", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 }
