@@ -78,7 +78,7 @@ class SqliteHelper (
         return list
     }*/
 
-    fun updateTodo(thetodo: todo){
+    fun updateTodo(thetodo: todo):Int?{ //지금 이거 오류가 남. 전체 앱이 종료됨.
         //이 코드는 하나만 바뀌어도 내용 전체를 업데이트함. 비효율적 but 코드가 훨 간단
         val values = ContentValues()
 
@@ -92,8 +92,14 @@ class SqliteHelper (
         values.put("tdel", thetodo.tdel)
 
         val wd = writableDatabase
-        wd.update("Todo",values,"id=${thetodo.tID}",null)
-        wd.close()
+
+        try {
+            wd.update("Todo",values,"id=${thetodo.tID}",null)
+            return 1
+        } catch (e: NumberFormatException) { return null}
+        finally {
+            wd.close() //메모리 누수 방지를 위해 close 필수
+        }
     }
 
     fun deleteTodo(thetodo:todo){
