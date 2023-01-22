@@ -15,22 +15,23 @@ class DatePick_Spinner_Before_Time : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_pick_spinner_before_time)
 
-        fun month_to_twodig(themonth:String): String {
-            if ("1" <= themonth && themonth < "10") {
-                return StringBuilder("0").append(themonth).toString();
+        fun date_to_twodig(thedate:Int): String {
+            if (1 <= thedate && thedate < 10) {
+                var date_a_c = thedate.toString()
+                return StringBuilder("0").append(date_a_c).toString();
             }
-            else { return themonth}
+            else { return thedate.toString()}
         }
 
         button_date_to_time.setOnClickListener {
-            date = datePicker.year.toString()+"-"+month_to_twodig((datePicker.month+1).toString())+"-"+datePicker.dayOfMonth.toString()
+            date = datePicker.year.toString()+"-"+date_to_twodig(datePicker.month+1)+"-"+date_to_twodig(datePicker.dayOfMonth)
 
             val intent2 = Intent(this, TimePick_Spinner::class.java).putExtra("chosendate", date)
             startActivityForResult(intent2, 1)
         }
 
         button_date_quit.setOnClickListener {
-            date = datePicker.year.toString()+"-"+month_to_twodig((datePicker.month+1).toString())+"-"+datePicker.dayOfMonth.toString()
+            date = datePicker.year.toString()+"-"+date_to_twodig(datePicker.month+1)+"-"+date_to_twodig(datePicker.dayOfMonth)
             intent.putExtra("chosendatetime", date)
             setResult(RESULT_OK, intent)
             finish()

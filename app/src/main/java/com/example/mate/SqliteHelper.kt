@@ -25,7 +25,7 @@ class SqliteHelper (
                 "tdate text," + //날짜를 모두 text (문자열)로 통일해두었습니다. 향후 수정 예정
                 "tdline text," +
                 "tipt int," +
-                "trpt bool default 0," +
+                "trpt bool," +
                 "talarm text," +
                 "tdone bool default 0," +
                 "tdel bool default 0" +
@@ -57,28 +57,50 @@ class SqliteHelper (
         }
     }
 
-    /*
-    fun selectTodo():MutableList<todo>{
-        val list = mutableListOf<todo>()
-        val db = writableDatabase
+    fun selectalltodo(DB_todo: SQLiteDatabase, condition:String?):MutableList<todo>{
+        //condition만 바꾸어 인수로 전해주면 그 조건에 일치하는 결과값을 List로 반환한다.
 
-        // Select문을 실행하여 결과로 Cursor 객체 획득하기
-        // Cursor 객체는 SQL 질의문을 통해 반환되는 결과이다(title, content 컬럽 값의 데이터가 들어가있다)
-        val cursor: Cursor = db.rawQuery("select tID, tName, tdate from Todo order by _id desc limit 1", null)
+        var columns: Array<String> = arrayOf<String>("tID", "tName", "tdate","tdline","trpt","talarm")
+        var cursor: Cursor = DB_todo.query("Todo", columns, condition, null, null, null, "tID DESC")
+        var todolistAll = mutableListOf<todo>()
 
-        while(cursor.moveToNext()) {
-            val tID = cursor.getInt(cursor.getColumnIndex("tID"))
-            val tName = cursor.getString(cursor.getColumnIndex("tName"))
-            val tdate = cursor.getString(cursor.getColumnIndex("tdate"))
-            list.add(todo(tID,tName,tdate, null, null, null, null, null, null))
+        while (cursor.moveToNext()) {
+            var tID = cursor.getInt(0)
+            var tName = cursor.getString(1)
+            var tdate = cursor.getString(2)
+            var tdline = cursor.getString(3)
+            var trpt = cursor.getString(4).toBoolean()
+            var talarm = cursor.getString(5)
+
+            todolistAll.add(todo(tID, tName, tdate, tdline, null, trpt, talarm, null, null))
         }
+
         cursor.close()
-        db.close()
+        DB_todo.close()
 
-        return list
-    }*/
+        return todolistAll
+    }
 
-    fun updateTodo(thetodo: todo):Int?{ //지금 이거 오류가 남. 전체 앱이 종료됨.
+    fun selectoneTodo(DB_todo: SQLiteDatabase, condition:String?):todo{
+        var todolistAll = mutableListOf<todo>()
+
+        var columns: Array<String> = arrayOf<String>("tID", "tName", "tdate","tdline","trpt","talarm")
+        var cursor: Cursor = DB_todo.query("Todo", columns, condition, null, null, null, null)
+
+        while (cursor.moveToNext()) {
+            var tID = cursor.getInt(0)
+            var tName = cursor.getString(1)
+            var tdate = cursor.getString(2)
+            var tdline = cursor.getString(3)
+            var trpt = cursor.getString(4).toBoolean()
+            var talarm = cursor.getString(5)
+
+            todolistAll.add(todo(tID, tName, tdate, tdline, null, trpt, talarm, null, null))
+        }
+        return todolistAll[0]
+    }
+
+    fun updateTodo(DB_todo: SQLiteDatabase, thetodo: todo):Int?{ //지금 이거 오류가 남. 전체 앱이 종료됨.
         //이 코드는 하나만 바뀌어도 내용 전체를 업데이트함. 비효율적 but 코드가 훨 간단
         val values = ContentValues()
 
@@ -91,21 +113,18 @@ class SqliteHelper (
         values.put("tdone", thetodo.tdone)
         values.put("tdel", thetodo.tdel)
 
-        val wd = writableDatabase
-
         try {
-            wd.update("Todo",values,"id=${thetodo.tID}",null)
+            DB_todo.update("Todo",values,"tID=${thetodo.tID}",null)
             return 1
         } catch (e: NumberFormatException) { return null}
         finally {
-            wd.close() //메모리 누수 방지를 위해 close 필수
+            DB_todo.close() //메모리 누수 방지를 위해 close 필수
         }
     }
 
-    fun deleteTodo(thetodo:todo){
-        val delete = "delete from Todo where tID = ${thetodo.tID}"
-        val db = writableDatabase
-        db.execSQL(delete)
-        db.close()
+    fun deleteTodo(DB_todo: SQLiteDatabase,tID:Int){
+        val delete = "delete from Todo where tID = ${tID}"
+        DB_todo.execSQL(delete)
+        DB_todo.close()
     }
 }

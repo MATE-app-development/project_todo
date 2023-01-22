@@ -22,11 +22,15 @@ import java.util.SimpleTimeZone
 lateinit var dbHelper: SqliteHelper
 lateinit var database: SQLiteDatabase
 
-var t_date:String =""
-var t_dline:String? =""
-var t_alarm:String? =""
 
 class Popup_Todo_Add: AppCompatActivity() {
+
+    var t_date:String =""
+    var t_dline:String? =""
+    var t_alarm:String? =""
+    var td_name:String?=""
+    var trpt:Boolean=false
+
     private var TDATE_REQUSET_CODE = 1
     private var TDLINE_REQUSET_CODE = 2
     private var TALRAM_REQUSET_CODE = 3
@@ -53,11 +57,16 @@ class Popup_Todo_Add: AppCompatActivity() {
             startActivityForResult(intent, TALRAM_REQUSET_CODE)
         }
 
+
         add_button_todo.setOnClickListener {
-            if(todoName_todo.text.toString().isNotEmpty() && t_date.isNotEmpty()){ //필수 입력 칸 : 이름과 날짜
-                var td_name:String = todoName_todo.text.toString()
-                var thetd = todo(null, td_name, t_date, t_dline, null, null, t_alarm, null, null)
-                //값 마저 넣어주기.
+            if(todoName_todo.text.toString().isNotEmpty() && t_date.isNotEmpty()){ //필수 입력 칸 : 이름과 날짜. 그런데 날짜는 입력 안 하면 자동으로 오늘 날짜 입력됨.
+                td_name= todoName_todo.text.toString()
+
+                if(rpt_todo.isChecked){
+                    trpt = true
+                }
+
+                var thetd = todo(null, td_name, t_date, t_dline, null, trpt, t_alarm, null, null)
                 if(dbHelper.insertTodo(thetd) == 1)
                     Toast.makeText(this.applicationContext, "할일을 입력했습니다.", Toast.LENGTH_SHORT).show()
             }
@@ -87,7 +96,7 @@ class Popup_Todo_Add: AppCompatActivity() {
                 deadline_todo.text = t_dline
             } else {
                 Toast.makeText(this.applicationContext, "날짜 입력 실패", Toast.LENGTH_SHORT).show()
-                t_dline=null
+                t_dline=""
             }
         }
         else if (requestCode == TALRAM_REQUSET_CODE) {
@@ -96,6 +105,7 @@ class Popup_Todo_Add: AppCompatActivity() {
                 alram_todo.text = t_alarm
             } else {
                 Toast.makeText(this.applicationContext, "날짜 입력 실패", Toast.LENGTH_SHORT).show()
+                t_alarm=""
             }
         }
     }
