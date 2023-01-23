@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         addButton = findViewById(R.id.addButton)
 
 
-        //상단 오늘 날짜 가져오기 -> 클릭 시 달력 picker 나오도록 추가해야 함(23.01.11기준)
+        //상단 오늘 날짜 가져오기
         val now_time : Long = System.currentTimeMillis()
         val date_time = Date(now_time) //Date 타입으로 변경
         val todaydate =SimpleDateFormat("yyyy-MM-dd") //원하는 포맷으로 지정
