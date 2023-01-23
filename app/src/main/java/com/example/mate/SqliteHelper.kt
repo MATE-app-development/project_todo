@@ -116,7 +116,7 @@ class SqliteHelper (
         try {
             DB_todo.update("Todo",values,"tID=${thetodo.tID}",null)
             return 1
-        } catch (e: NumberFormatException) { return null}
+        } catch (e: NumberFormatException) {return null}
         finally {
             DB_todo.close() //메모리 누수 방지를 위해 close 필수
         }
