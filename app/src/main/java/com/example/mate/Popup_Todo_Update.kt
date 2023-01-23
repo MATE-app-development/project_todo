@@ -46,7 +46,7 @@ class Popup_Todo_Update : AppCompatActivity() {
         date_todo.text = t_date
         deadline_todo.text = t_dline
         alram_todo.text = t_alarm
-        rpt_todo.isChecked = trpt
+        rpt_todo.isChecked = trpt //현재 반영 안 되고 있음.
 
         //처음 초기화는 잘 되는데, 값을 수정하니까 리셋되어버림.... ㅠㅠ 다시! (이름 말고 날짜가 문제임.)
 
