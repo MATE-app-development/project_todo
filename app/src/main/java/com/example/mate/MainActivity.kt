@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //추가 버튼 클릭시 화면 전환
+        //추가 버튼 클릭시 화면 전화안
         addButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, Popup_Todo_Add::class.java))
         }
