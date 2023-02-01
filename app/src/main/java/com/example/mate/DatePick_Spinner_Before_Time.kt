@@ -1,12 +1,12 @@
 package com.example.mate
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_date_pick_spinner.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_date_pick_spinner_before_time.*
 import kotlinx.android.synthetic.main.activity_date_pick_spinner_before_time.datePicker
+
 class DatePick_Spinner_Before_Time : AppCompatActivity() {
     var date =""
     var chosentime:String? = ""

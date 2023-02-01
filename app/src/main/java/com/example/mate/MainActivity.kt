@@ -4,12 +4,13 @@ package com.example.mate
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.app.AppCompatActivity
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var check1: CheckBox
     lateinit var check2: CheckBox
     lateinit var check3: CheckBox
-   // lateinit var addButton: FloatingActionButton
+    lateinit var addButton: FloatingActionButton
     var todayDate=""
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -35,8 +36,7 @@ class MainActivity : AppCompatActivity() {
         check1 = findViewById(R.id.check1)
         check2 = findViewById(R.id.check2)
         check3 = findViewById(R.id.check3)
-        //addButton = findViewById(R.id.addButton)
-
+        addButton = findViewById(R.id.addButton)
 
         //상단 오늘 날짜 가져오기
         val now_time : Long = System.currentTimeMillis()
@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
         val todaydate = SimpleDateFormat("yyyy-MM-dd") //원하는 포맷으로 지정
         val str_todaydate = todaydate.format(date_time)
         timeanddate.text = str_todaydate.toString()
+
+        //플로팅 버튼 추가창 연결
+
 
         //DB 결과 받아서 수정창 연결
         var resulttodolist = dbHelper.selectalltodo(dbHelper.readableDatabase, null)
@@ -55,10 +58,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
         //checkbox 체크 여부 확인
-
         check1.setOnCheckedChangeListener { buttonView, isChecked ->
 
             if(isChecked){
@@ -96,9 +96,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         //추가 버튼 클릭시 화면 전환
-//        addButton.setOnClickListener {
-//            startActivity(Intent(this@MainActivity, Popup_Todo_Add::class.java))
-//        }
+        addButton.setOnClickListener {
+            startActivity(Intent(this@MainActivity, Popup_Todo_Add::class.java))
+        }
 
         
     }

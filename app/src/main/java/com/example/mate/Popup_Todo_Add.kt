@@ -1,23 +1,11 @@
 package com.example.mate
 
-import android.app.DatePickerDialog
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
-import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.view.View.OnClickListener
-import android.view.View.OnDragListener
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.TextView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_date_pick_spinner.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_popup_todo_add.*
-import java.util.SimpleTimeZone
 
 lateinit var dbHelper: SqliteHelper
 lateinit var database: SQLiteDatabase

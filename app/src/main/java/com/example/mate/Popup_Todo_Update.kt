@@ -1,20 +1,16 @@
 package com.example.mate
 
 import android.content.Intent
-import android.content.res.Configuration
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_popup_todo_add.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_popup_todo_update.*
 import kotlinx.android.synthetic.main.activity_popup_todo_update.alram_todo
 import kotlinx.android.synthetic.main.activity_popup_todo_update.cancel_button_todo
 import kotlinx.android.synthetic.main.activity_popup_todo_update.date_todo
 import kotlinx.android.synthetic.main.activity_popup_todo_update.deadline_todo
 import kotlinx.android.synthetic.main.activity_popup_todo_update.rpt_todo
-import kotlinx.android.synthetic.main.activity_popup_todo_update.view.*
-import kotlin.properties.Delegates
+
 
 class Popup_Todo_Update : AppCompatActivity() {
 

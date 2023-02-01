@@ -1,11 +1,11 @@
 package com.example.mate
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_date_pick_spinner.*
 import kotlinx.android.synthetic.main.activity_date_pick_spinner.datePicker
 import kotlinx.android.synthetic.main.activity_date_pick_spinner_before_time.*

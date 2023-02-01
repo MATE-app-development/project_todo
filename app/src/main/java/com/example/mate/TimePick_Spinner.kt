@@ -1,7 +1,7 @@
 package com.example.mate
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_date_pick_spinner.*
 import kotlinx.android.synthetic.main.activity_time_pick_spinner.*
 
