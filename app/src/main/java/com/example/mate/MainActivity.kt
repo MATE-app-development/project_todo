@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var check1: CheckBox
     lateinit var check2: CheckBox
     lateinit var check3: CheckBox
-    lateinit var addButton: FloatingActionButton
+   // lateinit var addButton: FloatingActionButton
     var todayDate=""
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         check1 = findViewById(R.id.check1)
         check2 = findViewById(R.id.check2)
         check3 = findViewById(R.id.check3)
-        addButton = findViewById(R.id.addButton)
+        //addButton = findViewById(R.id.addButton)
 
 
         //상단 오늘 날짜 가져오기
@@ -85,9 +85,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         //추가 버튼 클릭시 화면 전환
-        addButton.setOnClickListener {
-            startActivity(Intent(this@MainActivity, Popup_Todo_Add::class.java))
-        }
+//        addButton.setOnClickListener {
+//            startActivity(Intent(this@MainActivity, Popup_Todo_Add::class.java))
+//        }
 
         
     }
