@@ -9,6 +9,10 @@ class TimePick_Spinner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_pick_spinner)
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         fun change_to_twodig(thetime:Int): String {
             if (thetime in 0..9) {

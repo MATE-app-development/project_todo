@@ -15,7 +15,8 @@
         <activity
             android:name=".DatePick_Spinner_Before_Time"
             android:theme="@style/Theme.MyDialog"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -23,7 +24,8 @@
         <activity
             android:name=".TimePick_Spinner"
             android:exported="true"
-            android:theme="@style/Theme.MyDialog">
+            android:theme="@style/Theme.MyDialog"
+            android:configChanges="orientation" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -31,7 +33,8 @@
         <activity
             android:name=".DatePick_Spinner"
             android:exported="true"
-            android:theme="@style/Theme.MyDialog">
+            android:theme="@style/Theme.MyDialog"
+            android:configChanges="orientation" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -39,7 +42,8 @@
         <activity
             android:name=".Popup_Todo_Update"
             android:exported="true"
-            android:theme="@style/Theme.MyDialog">
+            android:theme="@style/Theme.MyDialog"
+            android:configChanges="orientation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -47,14 +51,16 @@
         <activity
             android:name=".Popup_Todo_Add"
             android:exported="true"
-            android:theme="@style/Theme.MyDialog">
+            android:theme="@style/Theme.MyDialog"
+            android:configChanges="orientation" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

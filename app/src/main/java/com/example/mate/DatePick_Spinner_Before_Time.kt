@@ -15,6 +15,11 @@ class DatePick_Spinner_Before_Time : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_pick_spinner_before_time)
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
         fun date_to_twodig(thedate:Int): String {
             if (1 <= thedate && thedate < 10) {
                 var date_a_c = thedate.toString()
@@ -36,6 +41,13 @@ class DatePick_Spinner_Before_Time : AppCompatActivity() {
             setResult(RESULT_OK, intent)
             finish()
         }
+
+        button_date_delete.setOnClickListener {
+            date = ""
+            intent.putExtra("chosendatetime", date)
+            setResult(RESULT_OK, intent)
+            finish()
+        }
     }
     protected override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -48,7 +60,7 @@ class DatePick_Spinner_Before_Time : AppCompatActivity() {
                 setResult(RESULT_OK, intent)
                 finish()
             } else {
-                Toast.makeText(this.applicationContext, "날짜 입력 실패", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this.applicationContext, "시간 입력 실패", Toast.LENGTH_SHORT).show()
                 intent.putExtra("chosendatetime", date)
                 finish()
             }

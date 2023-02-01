@@ -9,6 +9,7 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_date_pick_spinner.*
 import kotlinx.android.synthetic.main.activity_date_pick_spinner.datePicker
 import kotlinx.android.synthetic.main.activity_date_pick_spinner_before_time.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class DatePick_Spinner : AppCompatActivity() {
@@ -16,6 +17,10 @@ class DatePick_Spinner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_pick_spinner)
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         fun date_to_twodig(thedate:Int): String {
             if (1 <= thedate && thedate < 10) {
@@ -29,7 +34,7 @@ class DatePick_Spinner : AppCompatActivity() {
             var date = datePicker.year.toString()+"-"+date_to_twodig(datePicker.month+1)+"-"+date_to_twodig(datePicker.dayOfMonth)
             intent.putExtra("chosendate", date)
             setResult(RESULT_OK, intent)
-            finish()
+            this.finish()
         }
     }
 }

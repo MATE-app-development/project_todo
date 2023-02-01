@@ -69,7 +69,8 @@ class SqliteHelper (
             var tName = cursor.getString(1)
             var tdate = cursor.getString(2)
             var tdline = cursor.getString(3)
-            var trpt = cursor.getString(4).toBoolean()
+            var trpt = false
+            if(cursor.getInt(4) > 0) {trpt = true}
             var talarm = cursor.getString(5)
 
             todolistAll.add(todo(tID, tName, tdate, tdline, null, trpt, talarm, null, null))
@@ -92,7 +93,8 @@ class SqliteHelper (
             var tName = cursor.getString(1)
             var tdate = cursor.getString(2)
             var tdline = cursor.getString(3)
-            var trpt = cursor.getString(4).toBoolean()
+            var trpt = false
+            if(cursor.getInt(4) > 0) {trpt = true}
             var talarm = cursor.getString(5)
 
             todolistAll.add(todo(tID, tName, tdate, tdline, null, trpt, talarm, null, null))

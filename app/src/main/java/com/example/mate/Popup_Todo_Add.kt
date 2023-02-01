@@ -38,9 +38,12 @@ class Popup_Todo_Add: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popup_todo_add)
-
         dbHelper = SqliteHelper(this, "todo.db", null, 1)
         database = dbHelper.writableDatabase
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         date_todo.setOnClickListener {
             val intent = Intent(this, DatePick_Spinner::class.java)
@@ -77,6 +80,11 @@ class Popup_Todo_Add: AppCompatActivity() {
             Toast.makeText(this.applicationContext, "할 일 입력을 취소했습니다.", Toast.LENGTH_SHORT).show()
             this.finish()
         }
+    }
+
+    override fun onDestroy() {
+        dbHelper.close()
+        super.onDestroy()
     }
 
     protected override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
