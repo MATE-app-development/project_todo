@@ -45,6 +45,17 @@ class MainActivity : AppCompatActivity() {
         val str_todaydate = todaydate.format(date_time)
         timeanddate.text = str_todaydate.toString()
 
+        //DB 결과 받아서 수정창 연결
+        var resulttodolist = dbHelper.selectalltodo(dbHelper.readableDatabase, null)
+        check1.text = resulttodolist[0].tID.toString()
+        check1.setOnClickListener {
+            val intent = Intent(this, Popup_Todo_Update::class.java)
+            intent.putExtra("tID", check1.text.toString())
+            startActivity(intent)
+        }
+
+
+
 
         //checkbox 체크 여부 확인
 
